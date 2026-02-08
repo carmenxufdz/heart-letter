@@ -378,16 +378,6 @@ overflow: visible;
     border-radius: 50%;
 }
 
-@media (max-width: 480px) {
-    .letter p {
-        font-size: 22px;
-    }
-
-    #letter-text {
-        font-size: 10px;
-    }
-}
-
 
 @media (max-width: 480px) {
     .letter.open .letter-front {
@@ -396,11 +386,5 @@ overflow: visible;
 
     .letter.open .letter-back {
         transform: rotateX(0deg) scale(1.2);
-    }
-}
-
-@media (max-width: 480px) {
-    .letter-back {
-        overflow-y: auto;
     }
 }
