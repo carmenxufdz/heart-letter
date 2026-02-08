@@ -14,6 +14,7 @@ body {
     font-family: sans-serif;
 }
 
+
 /* CONTENEDOR */
 .container {
   position: relative;
@@ -27,8 +28,8 @@ overflow: visible;
     left: 50%;
     top: 40px;
     transform: translateX(-50%);
-    width: clamp(260px, 90vw, 400px);
-    height: clamp(180px, 60vw, 250px);
+    width: 400px;
+    height: 250px;
     border-radius: 8px;
     padding: 5%;
 
@@ -111,17 +112,6 @@ overflow: visible;
     white-space: pre-line;
     user-select: none;
 }
-
-@media (max-width: 480px) {
-    .letter p {
-        font-size: 22px;
-    }
-
-    #letter-text {
-        font-size: 10px;
-    }
-}
-
 
 
 .letter-front,
@@ -388,21 +378,30 @@ overflow: visible;
     border-radius: 50%;
 }
 
+@media (max-width: 480px) {
+    .letter p {
+        font-size: 22px;
+    }
+
+    #letter-text {
+        font-size: 10px;
+    }
+}
+
 
 @media (max-width: 480px) {
     .letter.open .letter-front {
-        transform: rotateX(-180deg);
+        transform: rotateX(-180deg) scale(1.2);
     }
 
     .letter.open .letter-back {
-        transform: rotateX(0deg);
+        transform: rotateX(0deg) scale(1.2);
     }
 }
 
 @media (max-width: 480px) {
     .letter {
         width: 90vw;
-        height: 80vh;
         top: 10px;
     }
 }
