@@ -400,13 +400,6 @@ overflow: visible;
 }
 
 @media (max-width: 480px) {
-    .letter {
-        width: 90vw;
-        top: 10px;
-    }
-}
-
-@media (max-width: 480px) {
     .letter-back {
         overflow-y: auto;
     }
