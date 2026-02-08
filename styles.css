@@ -378,13 +378,3 @@ overflow: visible;
     border-radius: 50%;
 }
 
-
-@media (max-width: 480px) {
-    .letter.open .letter-front {
-        transform: rotateX(-180deg) scale(1.2);
-    }
-
-    .letter.open .letter-back {
-        transform: rotateX(0deg) scale(1.2);
-    }
-}
