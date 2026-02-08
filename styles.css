@@ -19,10 +19,11 @@ body {
 .container {
     position: relative;
     overflow: visible;
-    width: 90vw;          /* ocupa máximo 90% del ancho de la pantalla */
+    width: 80vw;          /* ocupa máximo 90% del ancho de la pantalla */
     max-width: 600px;     /* nunca más grande que antes */
-    height: 90vw;
+    height: 80vw;
     max-height: 400px;
+    aspect-ratio: 5/3.3;    /* mantiene proporción general */
     transform-origin: top center;
 }
 
@@ -30,9 +31,10 @@ body {
 .letter {
     position: absolute;
     left: 50%;
-    top: 5%; /* separación desde arriba, responsive */
+    top: 7.5%; /* separación desde arriba, responsive */
     transform: translateX(-50%);
     width: 90%;       /* ancho relativo al contenedor */
+    max-width: 590px;
     height: auto;
     aspect-ratio: 16/10; /* mantiene proporciones */
     border-radius: 0.5rem;
