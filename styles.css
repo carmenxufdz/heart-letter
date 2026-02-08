@@ -17,19 +17,25 @@ body {
 
 /* CONTENEDOR */
 .container {
-  position: relative;
-  
-overflow: visible;
+    position: relative;
+    overflow: visible;
+    width: 90vw;          /* ocupa máximo 90% del ancho de la pantalla */
+    max-width: 600px;     /* nunca más grande que antes */
+    height: 90vw;
+    max-height: 400px;
+    transform-origin: top center;
 }
 
 /* CARTA */
 .letter {
     position: absolute;
     left: 50%;
-    top: 40px;
+    top: 5%; /* separación desde arriba, responsive */
     transform: translateX(-50%);
-    width: 400px;
-    height: 250px;
+    width: 90%;       /* ancho relativo al contenedor */
+    height: auto;
+    aspect-ratio: 16/10; /* mantiene proporciones */
+    border-radius: 0.5rem;
     border-radius: 8px;
     padding: 5%;
 
@@ -107,7 +113,7 @@ overflow: visible;
 
 .letter p {
     font-family: serif;
-    font-size: 32px;
+    font-size: max(1vw,64px);
     color: #374151;
     white-space: pre-line;
     user-select: none;
@@ -117,7 +123,8 @@ overflow: visible;
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    aspect-ratio: 16/10; /* mantiene proporciones */
+    border-radius: 0.5rem;
     display: flex;
     backface-visibility: hidden; /* evita que se vea por detrás */
     transform-style: preserve-3d;
@@ -142,32 +149,39 @@ overflow: visible;
     padding: 5%;
     text-align: justify;
     z-index: 1;
+    overflow: hidden;         /* corta texto que sobrepasa */
 }
 
 /* Abrir carta */
 .letter.open .letter-front {
-    transform: rotateX(-180deg) scale(3);
+    transform: rotateX(-180deg) scale(clamp(1.5, 70vw / 400px, 3));
 }
 
 .letter.open .letter-back {
-    transform: rotateX(0deg) scale(3);
+    transform: rotateX(0deg) scale(clamp(1.5, 70vw / 400px, 3));
 }
 
 
 #letter-text {
     font-family: serif;
-    font-size: 12px;
+    font-size: clamp(14px, 2vw, 20px); /* se adapta a la pantalla */
     color: #374151;
     white-space: pre-line;
     user-select: none;
+
+    /* Evitar que se salga del contenedor */
+    overflow-wrap: break-word;  /* fuerza quiebres de palabra */
+    max-height: 100%;            /* no exceda la altura de la carta */
+    overflow-y: auto;            /* scroll si hay demasiado texto */
 }
 
 
 /* SOBRE */
 .envelope {
     position: relative;
-    width: 500px;
-    height: 330px;
+    width: 100%;       /* toma todo el contenedor */
+    height: auto;
+    aspect-ratio: 5/3.3; /* mantiene proporción original 500x330 */
     background-color: #fecaca;
     overflow: visible;
 }
@@ -219,7 +233,7 @@ overflow: visible;
     top: 0;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 10%;
     background-color: #fca5a5;
     transform-origin: top;
     transition: transform 0.7s ease;
@@ -288,8 +302,9 @@ overflow: visible;
     position: absolute;
     inset: 0;
     margin: auto;
-    width: 80px;
-    height: 80px;
+    width: 15%;
+    max-width: 80px;     /* límite máximo */
+    aspect-ratio: 1/1;   /* mantiene proporción cuadrada */
     z-index: 40;
     cursor: pointer;
     transition: transform 0.7s ease; /* duración y suavidad */
@@ -314,13 +329,13 @@ overflow: visible;
 
 @keyframes seal-close {
     0% {
-        transform: translate(0%, -400%) rotateX(180deg) scale(1);
+        transform: translate(0%, -500%) rotateX(180deg) scale(1);
     }
     50% {
-        transform: translate(0%, -400%) rotateX(180deg) scale(2); /* crece al doble */
+        transform: translate(0%, -500%) rotateX(180deg) scale(2); /* crece al doble */
     }
     100% {
-        transform: translate(0%, -400%) rotateX(180deg) scale(1); /* vuelve a su tamaño original */
+        transform: translate(0%, -500%) rotateX(180deg) scale(1); /* vuelve a su tamaño original */
     }
 }
 
@@ -330,11 +345,11 @@ overflow: visible;
 }
 
 .seal.up{
-    transform: translate(0%, -400%) rotateX(180deg); /* sube y gira */
+    transform: translate(0%, -500%) rotateX(180deg); /* sube y gira */
 }
 
 .seal.up:hover {
-    transform: translate(0%, -400%) rotateX(180deg) scale(1.05);
+    transform: translate(0%, -500%) rotateX(180deg) scale(1.05);
 }
 
 .seal.up.close {
@@ -345,8 +360,9 @@ overflow: visible;
 
 .heart {
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 100%;          /* relativo al sobre */
+    max-width: 70px;     
+    aspect-ratio: 1/1;
     background: #ff4757;
     transform: rotate(-45deg);
     border: none;
@@ -359,8 +375,9 @@ overflow: visible;
     position: absolute;
     top:-50%;
     left:0%;
-    width: 70px;
-    height: 70px;
+    width: 100%;          /* relativo al sobre */
+    max-width: 70px;     
+    aspect-ratio: 1/1;
     background: #ff4757;
     border-radius: 50%;
 }
@@ -370,8 +387,9 @@ overflow: visible;
     position: absolute;
     top:0;
     right:-50%;
-    width: 70px;
-    height: 70px;
+    width: 100%;          /* relativo al sobre */
+    max-width: 70px;     
+    aspect-ratio: 1/1;
     background: #ff4757;
     border-radius: 50%;
 }
